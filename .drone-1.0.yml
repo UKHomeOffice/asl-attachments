@@ -57,7 +57,7 @@ steps:
       - docker push quay.io/ukhomeofficedigital/asl-attachments:$${DRONE_COMMIT_SHA}
     when:
       event: push
-      branch: master
+      branch: main
   - name: update manifest
     image: quay.io/ukhomeofficedigital/asl-deploy-bot:latest
     environment:
@@ -72,7 +72,7 @@ steps:
         --version $${DRONE_COMMIT_SHA}
     when:
       event: push
-      branch: master
+      branch: main
 
 services:
 - name: docker
