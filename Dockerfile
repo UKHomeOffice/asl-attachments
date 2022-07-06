@@ -20,7 +20,4 @@ RUN rm /app/.npmrc
 
 USER 999
 
-# prime the babel cache at build time to improve deployed startup time
-RUN node lib/app.js
-
 CMD node index.js
