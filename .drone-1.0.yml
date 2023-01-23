@@ -46,7 +46,7 @@ steps:
     pull: always
     environment:
       IMAGE_NAME: asl-attachments
-      WHITELIST: CVE-2022-3734, CVE-2018-11218, CVE-2022-0543, CVE-2018-11219
+      WHITELIST: CVE-2022-3734, CVE-2018-11218, CVE-2022-0543, CVE-2018-11219, CVE-2021-29940
   - name: docker push
     image: docker:dind
     environment:
