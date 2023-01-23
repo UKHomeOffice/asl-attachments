@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon -r dotenv/config",
+    "test:audit": "audit-ci --high --skip-dev --config .auditrc.json",
     "test": "npm run test:lint",
     "test:lint": "eslint ."
   },
@@ -34,5 +35,8 @@
     "sharp": "^0.30.7",
     "uuid": "^8.3.2",
     "uuid-validate": "^0.0.3"
+  },
+  "devDependencies": {
+    "audit-ci": "^6.5.0"
   }
 }
