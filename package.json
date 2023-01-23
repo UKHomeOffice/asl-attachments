@@ -21,10 +21,9 @@
   },
   "homepage": "https://github.com/UKHomeOffice/asl-attachments#readme",
   "devDependencies": {
-    "dotenv": "^16.0.1",
-    "eslint": "^8.19.0",
-    "eslint-config-lennym": "^2.3.2",
-    "nodemon": "^2.0.18"
+    "audit-ci": "^6.5.0",
+    "eslint": "^8.32.0",
+    "eslint-config-lennym": "^2.3.2"
   },
   "dependencies": {
     "@asl/schema": "^10.9.0",
@@ -35,8 +34,5 @@
     "sharp": "^0.30.7",
     "uuid": "^8.3.2",
     "uuid-validate": "^0.0.3"
-  },
-  "devDependencies": {
-    "audit-ci": "^6.5.0"
   }
 }
