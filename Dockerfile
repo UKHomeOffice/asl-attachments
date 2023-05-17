@@ -11,9 +11,9 @@ COPY package.json /app/package.json
 COPY package-lock.json /app/package-lock.json
 
 RUN --mount=type=secret,id=token,uid=999 \
-    --mount=type=secret,id=username,uid=999 \
-    NPM_AUTH_USERNAME=`cat /run/secrets/username` \
-    NPM_AUTH_TOKEN=`cat /run/secrets/token` \
+    --mount=type=secret,id=github_token,uid=999 \
+    GITHUB_AUTH_TOKEN=`cat /run/secrets/github_token` \
+    ART_AUTH_TOKEN=`cat /run/secrets/token` \
     npm ci --production --no-optional
 
 COPY . /app
