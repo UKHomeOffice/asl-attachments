@@ -42,12 +42,10 @@ steps:
     commands:
       - docker build --secret id=github_token,env=GITHUB_AUTH_TOKEN --secret id=token,env=ART_AUTH_TOKEN -t asl-attachments .
   - name: scan-image
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/trivy/client:latest
     pull: always
     environment:
       IMAGE_NAME: asl-attachments
-      WHITELIST: CVE-2022-3734, CVE-2018-11218, CVE-2022-0543, CVE-2018-11219, CVE-2021-29940, CVE-2022-32511
-      WHITELIST_FILE: cve-exceptions.txt
   - name: docker push
     image: docker:dind
     environment:
@@ -86,9 +84,4 @@ services:
   image: docker:dind
   environment:
     DOCKER_TLS_CERTDIR: ""
-- name: anchore-submission-server
-  image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
-  pull: always
-  commands:
-    - /run.sh server
 
