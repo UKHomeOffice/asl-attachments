@@ -1,4 +1,3 @@
-
 kind: pipeline
 name: default
 type: kubernetes
@@ -42,10 +41,15 @@ steps:
     commands:
       - docker build --secret id=github_token,env=GITHUB_AUTH_TOKEN --secret id=token,env=ART_AUTH_TOKEN -t asl-attachments .
   - name: scan-image
-    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/anchore-submission:latest
-    pull: always
+    pull: Always
+    image: 340268328991.dkr.ecr.eu-west-2.amazonaws.com/acp/trivy/client:latest
+    resources:
+      limits:
+        cpu: 1000
+        memory: 1024Mi
     environment:
       IMAGE_NAME: asl-attachments
+      ALLOW_CVE_LIST_FILE: cve-exceptions.txt
   - name: docker push
     image: docker:dind
     environment:
