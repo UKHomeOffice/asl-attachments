@@ -24,7 +24,7 @@
   "devDependencies": {
     "audit-ci": "^6.5.0",
     "eslint": "^8.32.0",
-    "eslint-config-lennym": "^2.3.2"
+    "@ukhomeoffice/asl-eslint-common": "^2.2.0"
   },
   "dependencies": {
     "@asl/schema": "^10.16.4",
