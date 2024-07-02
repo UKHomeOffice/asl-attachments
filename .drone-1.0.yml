@@ -2,10 +2,6 @@ kind: pipeline
 name: default
 type: kubernetes
 steps:
-  - name: generate-package-lock
-    image: node:18
-    commands:
-      - npm ci --package-lock-only
   - name: install
     image: node:18
     environment:
