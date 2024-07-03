@@ -105,6 +105,7 @@ dist
 
 # InteliJ's
 .idea/*
+/*.iml
 
 # npm audit
 audit-report.json
