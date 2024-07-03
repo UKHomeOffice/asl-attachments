@@ -50,6 +50,8 @@ steps:
     environment:
       IMAGE_NAME: asl-attachments
       ALLOW_CVE_LIST_FILE: cve-exceptions.txt
+    commands:
+      - trivy image --show-suppressed $${IMAGE_NAME}
   - name: docker push
     image: docker:dind
     environment:
