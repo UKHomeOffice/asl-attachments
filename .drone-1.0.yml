@@ -49,7 +49,7 @@ steps:
         memory: 1024Mi
     environment:
       IMAGE_NAME: asl-attachments
-      ALLOW_CVE_LIST_FILE: .trivyignore
+      ALLOW_CVE_LIST_FILE: cve-exceptions.txt
   - name: docker push
     image: docker:dind
     environment:
