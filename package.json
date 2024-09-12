@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "exit 0",
     "start": "node index.js",
     "dev": "nodemon -r dotenv/config",
     "test:audit": "audit-ci --high --skip-dev --config .auditrc.json",
@@ -23,7 +24,7 @@
   "devDependencies": {
     "audit-ci": "^6.5.0",
     "eslint": "^8.32.0",
-    "eslint-config-lennym": "^2.3.2"
+    "@ukhomeoffice/eslint-config-asl": "^3.0.0"
   },
   "dependencies": {
     "@asl/schema": "^10.16.4",
@@ -31,7 +32,7 @@
     "busboy": "^1.6.0",
     "express": "^4.18.1",
     "minimist": "^1.2.6",
-    "sharp": "^0.30.7",
+    "sharp": "^0.33.4",
     "uuid": "^8.3.2",
     "uuid-validate": "^0.0.3"
   }
