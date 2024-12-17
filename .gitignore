@@ -109,3 +109,6 @@ dist
 
 # npm audit
 audit-report.json
+
+# test - this file is supposed to be created when you have run the loclstack-s3-test is executed.
+test/downloaded-file.txt

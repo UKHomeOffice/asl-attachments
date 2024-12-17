@@ -6,7 +6,7 @@ try {
 }
 
 const args = require('minimist')(process.argv.slice(2));
-const db = require('@asl/schema');
+const db = require('../asl-schema');
 const isUUID = require('uuid-validate');
 const crypto = require('crypto');
 const { v4: uuid } = require('uuid');

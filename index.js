@@ -1,19 +1,30 @@
 const API = require('./lib/api');
 const settings = require('./config');
 
-const server = API(settings).listen(settings.port, (err, result) => {
-  if (err) {
-    return console.error(err);
-  }
-  console.log(`Listening on port ${server.address().port}`);
-});
+const startServer = async () => {
+  try {
+    // Initialize the server asynchronously
+    const app = await API(settings);
+    const server = app.listen(settings.port);
 
-process.on('SIGINT', () => {
-  if (server.listening) {
-    console.log('Attempting to exit gracefully.');
-    server.close(() => {
-      console.log('Server closed. Quitting.');
-      process.exit();
+    server.on('listening', () => {
+      console.log(`Listening on port ${server.address().port}`);
     });
+
+    process.on('SIGINT', async () => {
+      if (server.listening) {
+        console.log('Attempting to exit gracefully.');
+        await new Promise((resolve) => server.close(resolve));
+        console.log('Server closed. Quitting.');
+        process.exit();
+      }
+    });
+
+    return server;
+  } catch (err) {
+    console.error('Error starting the server:', err);
+    process.exit(1);
   }
-});
+};
+
+startServer();
