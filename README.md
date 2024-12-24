@@ -15,8 +15,7 @@ npm run dev
 ### Uploading a file
 This will return a response with a token to identify the attachment
 ```
-curl -X POST http://localhost:8092 -F "file=@/image/location.jpg"
-// i.e file save in root/test/image/location.jpg
+cd to the folder where you have file i.e test/image/
 curl -X POST http://localhost:8092 -F "file=@location.jpg"  
 ```
 Result:
@@ -31,4 +30,18 @@ Result:
 Using the token returned by the upload
 ```
 http://localhost:8092/acbdef123
+```
+
+### Testing localstack
+```
+cd test
+```
+```
+node localstack-s3-test.js
+```
+on success
+```
+Bucket "test-bucket" already exists.
+File uploaded successfully. ETag: "13a079f47499a790d07a5b607798bf06"
+File downloaded successfully.
 ```

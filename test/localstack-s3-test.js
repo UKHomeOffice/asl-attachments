@@ -2,7 +2,14 @@
  * Testing S3 config can upload and download a file.
  * to test run: node localstack-s3-test.js
  * */
+try {
+  // eslint-disable-next-line
+  require('dotenv').config();
+} catch (e) {
+  /* swallow error */
+}
 const fs = require('fs');
+const path = require('path');
 const config = require('../config');
 const { S3 } = require('@asl/service/clients');
 
@@ -32,19 +39,19 @@ async function checkOrCreateBucket(bucketName) {
 }
 
 // Upload a file to the bucket
-async function uploadFile(bucketName, fileName) {
+async function uploadFile(bucketName, filePath) {
   try {
-    const fileContent = fs.readFileSync(fileName); // Read file content
+    const fileContent = fs.readFileSync(filePath); // Read file content
     const params = {
       Bucket: bucketName,
-      Key: 'test-file.txt',
+      Key: 'test-1.txt',
       Body: fileContent
     };
 
     const data = await s3.upload(params).promise();
     console.info(`File uploaded successfully. ETag: ${data.ETag}`);
   } catch (err) {
-    console.error('Error uploading file:', err);
+    console.error('Error uploading file:', err.message);
   }
 }
 
@@ -53,7 +60,7 @@ async function downloadFile(bucketName, fileName) {
   try {
     const params = {
       Bucket: bucketName,
-      Key: 'test-file.txt'
+      Key: 'test-1.txt'
     };
 
     const data = await s3.getObject(params).promise();
@@ -67,9 +74,10 @@ async function downloadFile(bucketName, fileName) {
 // Test the script
 async function test() {
   const bucketName = 'test-bucket';
+  const absolutePath = path.resolve('./image/text.txt');
 
   await checkOrCreateBucket(bucketName);
-  await uploadFile(bucketName, './image/text.txt');
+  await uploadFile(bucketName, absolutePath);
   await downloadFile(bucketName, 'downloaded-file.txt');
 }
 
