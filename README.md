@@ -37,6 +37,11 @@ http://localhost:8092/acbdef123
 cd test
 ```
 ```
+region=eu-west-2 
+S3_ACCESS_KEY=test 
+S3_SECRET=test 
+S3_BUCKET=asl-dev 
+S3_LOCALSTACK_URL=http://localhost:4566 
 node localstack-s3-test.js
 ```
 on success
