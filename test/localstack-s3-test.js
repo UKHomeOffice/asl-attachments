@@ -2,12 +2,6 @@
  * Testing S3 config can upload and download a file.
  * to test run: node localstack-s3-test.js
  * */
-try {
-  // eslint-disable-next-line
-  require('dotenv').config();
-} catch (e) {
-  /* swallow error */
-}
 const fs = require('fs');
 const path = require('path');
 const config = require('../config');
